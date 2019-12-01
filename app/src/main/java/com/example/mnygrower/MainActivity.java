@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button loginButton;
     private EditText etPassword, etEmail;
+    private TextView Registration;
 
 
 
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.btnLogin);
         etEmail = findViewById(R.id.etMail);
         etPassword = findViewById(R.id.etPassword);
+        Registration = findViewById(R.id.tvRegister);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else Toast.makeText(MainActivity.this, "Check your login data and try again", Toast.LENGTH_SHORT).show();
 
+            }
+        });
+
+        Registration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
             }
         });
     }
