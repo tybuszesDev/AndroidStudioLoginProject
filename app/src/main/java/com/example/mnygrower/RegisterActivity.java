@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     Switch accept;
     Button regButton;
     String email, name, age, password;
+    TextView termsText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         backToLogin = findViewById(R.id.tvRegisterBackLogin);
         regButton = findViewById(R.id.btnRegisterButton);
         userAge = findViewById(R.id.etAge);
+        termsText = findViewById(R.id.terms_text);
 
 
 
@@ -81,6 +84,15 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+            }
+        });
+
+
+        termsText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+                startActivity(browserIntent);
             }
         });
 

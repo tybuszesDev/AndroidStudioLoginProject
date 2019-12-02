@@ -55,7 +55,9 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validate(etEmail.getText().toString(), etPassword.getText().toString());
+                if(etEmail.getText().toString().isEmpty() || etPassword.getText().toString().isEmpty()){
+                    Toast.makeText(MainActivity.this, "Podaj Email i Hasło", Toast.LENGTH_SHORT).show();
+                }else  validate(etEmail.getText().toString(), etPassword.getText().toString());
 
             }
         });
