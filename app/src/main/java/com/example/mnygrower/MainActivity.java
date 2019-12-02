@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private int attempts = 5;
     private ProgressDialog progressDialog;
+    private TextView forgotpassword;
 
 
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etMail);
         etPassword = findViewById(R.id.etPassword);
         Registration = findViewById(R.id.tvRegister);
+        forgotpassword = findViewById(R.id.tvPasswordRemember);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -64,6 +66,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, RegisterActivity.class));
             }
         });
+
+        forgotpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, PasswordActivity.class));
+            }
+        });
     }
     protected void validate(String userName, String userPassword) {
 
@@ -75,8 +84,9 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     progressDialog.dismiss();
-                    Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, SecondActivity.class));
+                    //Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();  //Odkomentuj przy niewymaganej weryfikacji
+                    //startActivity(new Intent(MainActivity.this, SecondActivity.class));                //           - || -
+                    checkEmailVerification();                                                            // zakomentuj przy niewymaganej weryfikacji
                 } else {
                     attempts -= 1;
 
@@ -89,6 +99,17 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void checkEmailVerification(){
+        FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
+        Boolean emailflag = firebaseUser.isEmailVerified();
 
+        if(emailflag){
+            finish();
+            startActivity(new Intent(MainActivity.this, SecondActivity.class));
+        }else{
+            Toast.makeText(this, "Verify your email !", Toast.LENGTH_SHORT).show();
+            firebaseAuth.signOut();
+        }
+    }
 }
 
