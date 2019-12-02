@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "982738499666",
+    "firebase_url": "https://mnygrower.firebaseio.com",
+    "project_id": "mnygrower",
+    "storage_bucket": "mnygrower.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982738499666:android:aa7fe0747547fe2122878b",
+        "android_client_info": {
+          "package_name": "com.example.mnygrower"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982738499666-ueeg73h2bdf1l3t0b35e2ejjesfsl6ho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6J1YRUFM0Pju9NoleanHXhso-ZInSAkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982738499666-ueeg73h2bdf1l3t0b35e2ejjesfsl6ho.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

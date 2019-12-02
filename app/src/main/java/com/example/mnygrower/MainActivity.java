@@ -1,7 +1,9 @@
 package com.example.mnygrower;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,11 +12,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button loginButton;
     private EditText etPassword, etEmail;
     private TextView Registration;
+    private FirebaseAuth firebaseAuth;
+    private int attempts = 5;
+    private ProgressDialog progressDialog;
 
 
 
@@ -28,13 +39,21 @@ public class MainActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         Registration = findViewById(R.id.tvRegister);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        progressDialog = new ProgressDialog(this);
+
+        FirebaseUser user = firebaseAuth. getCurrentUser();
+
+        /*if(user != null){
+            finish();
+            startActivity(new Intent(MainActivity.this, SecondActivity.class));   //NIEWYLOGOWYWANIE
+        }*/
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validate()){
-                    startActivity(new Intent(MainActivity.this, SecondActivity.class));
-                }
-                else Toast.makeText(MainActivity.this, "Check your login data and try again", Toast.LENGTH_SHORT).show();
+                validate(etEmail.getText().toString(), etPassword.getText().toString());
 
             }
         });
@@ -46,11 +65,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    protected boolean validate(){
-        String pass, name;
-        pass = etPassword.getText().toString();
-        name = etEmail.getText().toString();
-        if (pass.equals("tomek1") && name.equals("tomek1")) return true;
-        else return false;
+    protected void validate(String userName, String userPassword) {
+
+        progressDialog.setMessage("Check my other Apps !");
+        progressDialog.show();
+
+        firebaseAuth.signInWithEmailAndPassword(userName, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    progressDialog.dismiss();
+                    Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, SecondActivity.class));
+                } else {
+                    attempts -= 1;
+
+                    Toast.makeText(MainActivity.this, "Login failed Attepmts left: " + attempts, Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+                }
+                if (attempts == 0) loginButton.setEnabled(false);
+            }
+
+        });
     }
+
+
 }
+
