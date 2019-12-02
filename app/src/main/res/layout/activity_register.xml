@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".RegisterActivity">
 
     <TextView
@@ -73,16 +74,18 @@
 
     <Button
         android:id="@+id/btnRegisterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="434dp"
+        android:layout_height="58dp"
         android:layout_marginBottom="84dp"
+        android:alpha="0.25"
+        android:color="#66FF0000"
         android:text="Register"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="22dp"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Switch
         android:id="@+id/sRegisterAccept"
