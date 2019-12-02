@@ -30,7 +30,6 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/etRegisterEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -38,7 +37,7 @@
         android:id="@+id/etRegisterEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
@@ -51,7 +50,7 @@
         android:id="@+id/etRegisterPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -63,11 +62,12 @@
         android:id="@+id/etRegisterPassword2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="retype password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etRegisterPassword" />
 
@@ -96,7 +96,7 @@
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etRegisterPassword2"
-        app:layout_constraintVertical_bias="0.187" />
+        app:layout_constraintVertical_bias="0.492" />
 
     <TextView
         android:id="@+id/tvRegisterBackLogin"
@@ -107,5 +107,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRegisterButton" />
+
+    <EditText
+        android:id="@+id/etAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Age "
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/sRegisterAccept"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etRegisterPassword2"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
