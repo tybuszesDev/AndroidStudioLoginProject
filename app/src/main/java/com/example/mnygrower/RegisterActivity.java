@@ -65,9 +65,9 @@ public class RegisterActivity extends AppCompatActivity {
                                 sendUserData();
                                 sendEmailVerification();
                                 Toast.makeText(RegisterActivity.this, "Successfully Registered, Verification mail sent!", Toast.LENGTH_SHORT).show();
-                                //firebaseAuth.signOut();
                                 finish();
                                 startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                                firebaseAuth.signOut();
                             }
                             else{
                                 Toast.makeText(RegisterActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
