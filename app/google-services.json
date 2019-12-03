@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "982738499666-bpje6ruc91v7dahbtdrivnbijvt358nh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mnygrower",
+            "certificate_hash": "e32d2ec85f62e832b4497c19a1de988fc90b2fa7"
+          }
+        },
+        {
           "client_id": "982738499666-ueeg73h2bdf1l3t0b35e2ejjesfsl6ho.apps.googleusercontent.com",
           "client_type": 3
         }
