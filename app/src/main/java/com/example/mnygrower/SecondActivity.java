@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,12 +13,20 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class SecondActivity extends AppCompatActivity {
 
-    Button logout;
+    Button checkDriver;
     private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference mDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +34,13 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        logout = findViewById(R.id.btnLogout);
+        checkDriver = findViewById(R.id.btnCheckTaxi);
         firebaseAuth = FirebaseAuth.getInstance();
 
-        logout.setOnClickListener(new View.OnClickListener() {
+        checkDriver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Logout();
+                checkTaxiDriver();
             }
         });
 
@@ -42,6 +51,27 @@ public class SecondActivity extends AppCompatActivity {
         finish();
         startActivity(new Intent(SecondActivity.this, MainActivity.class));
         Toast.makeText(SecondActivity.this, "LogOut Successful", Toast.LENGTH_SHORT).show();
+    }
+
+    private void checkTaxiDriver(){
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+       /* ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        */
+       startActivity(new Intent(SecondActivity.this, TaxiDriverActivity.class));
+
+
     }
 
     @Override
