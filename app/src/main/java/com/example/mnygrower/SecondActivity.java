@@ -40,7 +40,8 @@ public class SecondActivity extends AppCompatActivity {
         checkDriver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkTaxiDriver();
+                finish();
+                startActivity(new Intent(SecondActivity.this, TaxiDriverActivity.class));
             }
         });
 
@@ -54,7 +55,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     private void checkTaxiDriver(){
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        //mDatabase = FirebaseDatabase.getInstance().getReference();
 
        /* ValueEventListener postListener = new ValueEventListener() {
             @Override
@@ -69,6 +70,7 @@ public class SecondActivity extends AppCompatActivity {
             }
         };
         */
+        finish();
        startActivity(new Intent(SecondActivity.this, TaxiDriverActivity.class));
 
 
