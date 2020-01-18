@@ -74,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
         accept = findViewById(R.id.sRegisterAccept);
         backToLogin = findViewById(R.id.tvRegisterBackLogin);
         regButton = findViewById(R.id.btnRegisterButton);
-        userAge = findViewById(R.id.etAge);
+
         termsText = findViewById(R.id.terms_text);
         userProfilePic = findViewById(R.id.ivProfile);
 

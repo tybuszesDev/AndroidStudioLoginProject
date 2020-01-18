@@ -97,21 +97,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRegisterButton" />
 
-    <EditText
-        android:id="@+id/etAge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Age "
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/sRegisterAccept"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRegisterPassword2"
-        app:layout_constraintVertical_bias="0.008" />
-
     <Switch
         android:id="@+id/sRegisterAccept"
         android:layout_width="115dp"
@@ -140,9 +125,7 @@
         app:layout_constraintBottom_toTopOf="@+id/sRegisterAccept"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.332"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etAge"
-        app:layout_constraintVertical_bias="0.792" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/ivProfile"

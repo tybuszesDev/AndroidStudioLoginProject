@@ -3,11 +3,13 @@ package com.example.mnygrower;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +22,7 @@ public class UpdatePassword extends AppCompatActivity {
     private Button update;
     private EditText newPassword;
     private FirebaseUser firebaseUser;
+    private TextView backToLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +31,20 @@ public class UpdatePassword extends AppCompatActivity {
 
         update = findViewById(R.id.btnUpdatePassword);
         newPassword = findViewById(R.id.etNewPassword);
+        backToLogin = findViewById(R.id.tvBackToLogin);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        backToLogin. setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(UpdatePassword.this, MainActivity.class));
 
+            }
+        });
 
         update.setOnClickListener(new View.OnClickListener() {
             @Override
